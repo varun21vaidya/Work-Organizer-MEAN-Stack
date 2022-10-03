@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bulma/bulma.sass';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@700&family=Roboto+Slab&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto+Slab&family=Roboto:wght@100&display=swap');
+
+$background: #44ddd0;
+$green: #27d7a1;
+$light-green: #45f69e;
+$light: #f8f8f8;
+$dark-green: rgb(0,100,80);
+
+//update bulmas gloabal variables
+$family-sans-sarif: "Nunito",sans-serif;
+$primary:$green;
+
+$link: $dark-green;
+
+// custome global styles for whole app
+
+html{
+    background: linear-gradient(to right top, $background, $green);
+}
+html,body{
+    height: 100%;
+}
