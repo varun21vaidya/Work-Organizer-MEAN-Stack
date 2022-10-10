@@ -61,7 +61,7 @@
 
         // is active is a special class to detect which list is opened for tasks
         &.is-active{
-           background-color: rgba(104, 203, 104, 0.827); 
+           background-color: rgba(157, 204, 157, 0.525); 
            color: $dark-green;
         }
     }
@@ -104,4 +104,14 @@
     text-decoration: line-through;
     opacity: 0.8;
     
+}
+
+.task-list-container .addtask{
+    position:absolute;
+    bottom:6%;
+    right:5%;
+
+    .button{
+        border-radius: 50%;
+    }
 }

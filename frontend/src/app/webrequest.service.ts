@@ -14,6 +14,7 @@ export class WebrequestService {
   }
 
   post(url: string, payload: Object) {
+    console.log('for backend', `${this.ROOT}/${url}`, payload);
     return this.http.post(`${this.ROOT}/${url}`, payload);
   }
   put(url: string, payload: Object) {
