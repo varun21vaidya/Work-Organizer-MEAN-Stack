@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewlistComponent } from './pages/newlist/newlist.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NewtaskComponent } from './pages/newtask/newtask.component';
+import { EditListComponent } from './pages/edit-list/edit-list.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskViewComponent, NewlistComponent, LoginPageComponent, NewtaskComponent],
+  declarations: [AppComponent, TaskViewComponent, NewlistComponent, LoginPageComponent, NewtaskComponent, EditListComponent, EditTaskComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
