@@ -17,6 +17,9 @@
     max-height: 680px;
     margin: auto;
     // background-color: white;
+    .title{
+        margin: 0;
+    }
 }
 
 .title{
@@ -59,11 +62,12 @@
             background-color: $light;
         }
 
-        // is active is a special class to detect which list is opened for tasks
-        &.is-active{
-           background-color: rgba(104, 203, 104, 0.827); 
-           color: $dark-green;
+        &.is-selected{
+            background-color: rgba(157, 204, 157, 0.525); 
+            color: $dark-green;
         }
+
+
     }
 }
 
@@ -91,17 +95,80 @@
 }
 
 
-.task:active:not(.complete) {
-    transform: scale(0.95);
+// .task:active:not(.complete) {
+//     transform: scale(1);
 
-}
+// }
 
 .task:hover:not(.complete) {
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.100);
+
+    &.is-selected{
+        box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.100);
+
+    }
 }
+
+// is selected is a special class to detect selected tasks
+.is-selected{
+        background-color: rgba(157, 204, 157, 0.525); 
+        color: $dark-green;
+    }
+
 
 .task.complete{
     text-decoration: line-through;
     opacity: 0.8;
     
 }
+
+.task-list-container .addtask{
+    position:absolute;
+    bottom:6%;
+    right:5%;
+
+    .button{
+        border-radius: 50%;
+    }
+}
+
+// modify buttons
+.task-list-container {
+
+    .title{
+        margin-bottom: 10px;
+    }
+
+    .modify{
+    display: flex;
+    position:absolute;
+    bottom:6%;
+    right:12%;
+
+    .button{
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+}
+}
+.top-bar {
+    display: flex;
+    .title{
+        flex-grow: 1;
+    }
+}
+
+
+// for showing dropdown
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+  }  
+.dropdown:hover .dropdown-content {
+    display: block;
+  }

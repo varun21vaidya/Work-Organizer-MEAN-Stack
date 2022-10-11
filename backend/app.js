@@ -4,6 +4,10 @@ const route = require('./Routes/routing');
 
 const app = express();
 app.use(bodyparser.json());
+
+var cors = require('cors');
+app.use(cors());
+
 app.use('/', route);
 
 const port = process.env.PORT || 3000;

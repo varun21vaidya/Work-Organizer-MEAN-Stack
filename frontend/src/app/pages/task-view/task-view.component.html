@@ -1,29 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="centered-content">
     <div class="container">
         <div class="side-bar has-background-white">
-            <h1 class="title has-text-primary">
-                List
-            </h1>
+            <div class="top-bar">
+                <h1 class="title has-text-primary">
+                    List
+                </h1>
+                <div class="dropdown">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <span class="icon is-small">
+                            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a class="dropdown-item has-text-danger has-text-weight-bold" (click)="deleteThisList()">
+                            Delete
+                        </a>
+
+                        <a class="dropdown-item has-text-weight-bold"
+                            [routerLink]="['/lists', currentRoute, 'editlist']">
+                            Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="list-menu">
-                <a class="list-menu-item is-active">
-                    list1
-                </a>
-                <a class="list-menu-item">
-                    list1
-                </a>                
-                <a class="list-menu-item">
-                    list1
-                </a>                
-                <a class="list-menu-item">
-                    list1
+                <!-- for loop runs for lists which takes data in component.ts from id from param -->
+                <!-- when clicked on cetrain list routerlink routes to specific linkid which shows tasks -->
+                <!-- when clicked on that list routerlinkActive checks if url in routerlink is clicked and
+                     enables is-selected custom class-->
+                <a class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists', list._id]"
+                    routerLinkActive="is-selected">
+
+                    {{list.title}}
+
                 </a>
             </div>
 
             <!-- button to create new lists -->
-            <button class="button is-primary has-text-white">+ New List</button>
+            <button class="button is-success has-text-white" routerLink="/newlist">+ New List</button>
         </div>
+
+
         <div class="task-list-container has-background-light">
             <h1 class="title has-text-primary">
                 Tasks
@@ -32,18 +55,38 @@
 
             <!-- task elements -->
 
-            <div class="task">
-                you have to do this
+            <div class="task" *ngFor="let task of tasks" [routerLink]="['/lists', currentRoute,'tasks', task._id]"
+                routerLinkActive="is-selected">
+                {{task.title}}
             </div>
-            <div class="task complete">
-                you have to do this
-            </div>            
-            <div class="task">
-                you have to do this
-            </div>            
-            <div class="task">
-                you have to do this
+
+
+            <!-- add task button -->
+
+            <div class="modify">
+                <button class="button is-success is-medium" (click)="deleteThisTask()" routerLink="../..">
+                    <span class="icon">
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
+                </button>
+                <!-- to get link of params of task id we will redirect the button click to EditThisTask ie when this is clicked
+                from ts file it will navigate to lists/:listId/tasks/:taskId/edittask and go to edit task component -->
+                <button class="button is-success is-medium " (click)="RouteToEdit()">
+                    <span class="icon">
+                        <i class="fa-solid fa-edit"></i>
+                    </span>
+                </button>
+            </div>
+
+            <div class="addtask">
+                <button class="button is-success is-medium " [routerLink]="['/lists',currentRoute,'newtask']">
+                    <span class="icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                </button>
             </div>
         </div>
+
+
     </div>
 </div>

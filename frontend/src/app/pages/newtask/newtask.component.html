@@ -1,0 +1,22 @@
+<div class="centered-content">
+    <div class="modal-box">
+        <h1 class="title">
+            Create New Task
+        </h1>
+
+        <!-- Form with butoon -->
+        <div class="field has-addons is-grouped">
+            <div class="control is-expanded">
+                <input #TaskTitleInput class="input" type="text" placeholder="Create New Task">
+            </div>
+            <div class="control">
+                <a class="button is-info submit" (click)="createNewTask(TaskTitleInput.value)">
+                    Save
+                </a>
+            </div>
+        </div>
+
+        <!-- ".." this returns the url to go back to previous stage ie same list -->
+        <button routerLink=".." class="button is-success">Cancel</button>
+    </div>
+</div>

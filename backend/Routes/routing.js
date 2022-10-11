@@ -19,9 +19,9 @@ routing.post('/lists/:listId/tasks', ListController.posttasks);
 
 routing.get('/lists/:listId/tasks', ListController.gettasks);
 
-routing.put('/lists/:listId/tasks/:taskid', ListController.updatetasks);
+routing.put('/lists/:listId/tasks/:taskId', ListController.updatetasks);
 
-routing.delete('/lists/:listId/tasks/:taskid', ListController.deletetasks);
+routing.delete('/lists/:listId/tasks/:taskId', ListController.deletetasks);
 
 
 

@@ -140,7 +140,7 @@ exports.gettasks= async (req,res)=>{
   catch{
     res.status(404).json({
       status: 'fail',
-      message: err,
+      // message: err,
     });
   }
 }
@@ -177,7 +177,7 @@ exports.updatetasks= async (req,res)=>{
   try{
     const task = await Task.findOneAndUpdate(
       { _listId: req.params.listId ,
-       _id: req.params.taskid },
+       _id: req.params.taskId },
       req.body,
       {
         new: true, //to return new doc back
@@ -208,7 +208,7 @@ exports.updatetasks= async (req,res)=>{
 // delete specific task from list
 exports.deletetasks= async (req,res)=>{
 try
-  {  const deleted = await Task.deleteOne({ _listId: req.params.listId , _id: req.params.taskid });
+  {  const deleted = await Task.deleteOne({ _listId: req.params.listId , _id: req.params.taskId });
   if (deleted.deletedCount === 0) {
     res.status(404).json({
       status: 'fail',
