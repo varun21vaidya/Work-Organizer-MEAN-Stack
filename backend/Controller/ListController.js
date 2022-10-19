@@ -9,26 +9,6 @@ exports.getlists= async (req,res)=>{
   try{
     const list= await List.find({})
     res.send(list) ;
-
-    // if (list.length > 0){
-    //   {    
-    //     res.status(200).json({
-    //       status: 'success',
-    //       results: list.length,
-    //       data: {
-    //         list,
-    //       },
-    //     });
-    //   }
-    // }
-    // else {
-    //   res.status(400).json({
-    //     status: 'success',
-    //     data: {
-    //       message: 'No titles available in the list',
-    //     },
-    //   });
-    // }
   }
   catch{
     res.status(404).json({
@@ -153,6 +133,7 @@ exports.posttasks= async (req,res)=>{
     // const Id = await helper.generatelistsId();
     const task= await Task.create({
       title: req.body.title,
+      completed: req.body.completed,
       _listId: req.params.listId
     })
     res.status(201).json({

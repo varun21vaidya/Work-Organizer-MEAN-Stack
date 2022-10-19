@@ -55,15 +55,24 @@
 
             <!-- task elements -->
 
-            <div class="task" *ngFor="let task of tasks" [routerLink]="['/lists', currentRoute,'tasks', task._id]"
-                routerLinkActive="is-selected">
-                {{task.title}}
+            <div *ngIf="tasks?.length!==0; else noresults">
+                <div class="task" *ngFor="let task of tasks"
+                    [routerLink]="['/lists', task.listId,'tasks',task.taskId]" routerLinkActive="is-selected">
+
+                    {{task.title}}
+                </div>
             </div>
+            <ng-template #noresults>
+                <div class="empty-state">
+                    <img src="../../../assets/empty.png" alt="No Tasks" class="empty">
+                    <h1>No Tasks Available, please Add Task with + button</h1>
+                </div>
+            </ng-template>
 
 
             <!-- add task button -->
 
-            <div class="modify">
+            <div class="modify" >
                 <button class="button is-success is-medium" (click)="deleteThisTask()" routerLink="../..">
                     <span class="icon">
                         <i class="fa-solid fa-trash"></i>
@@ -76,6 +85,12 @@
                         <i class="fa-solid fa-edit"></i>
                     </span>
                 </button>
+
+                <button class="button is-success is-medium" (click)="CompleteThisTask()" [ngClass]="{'complete': taskToDo.completed}">
+                    <span class="icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </button>
             </div>
 
             <div class="addtask">
@@ -84,7 +99,10 @@
                         <i class="fa-solid fa-plus"></i>
                     </span>
                 </button>
+
             </div>
+
+
         </div>
 
 

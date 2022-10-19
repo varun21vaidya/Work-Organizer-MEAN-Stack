@@ -10,14 +10,14 @@ export class WebrequestService {
   }
 
   get(url: string) {
-    return this.http.get(`${this.ROOT}/${url}`);
+    return this.http.get<any[]>(`${this.ROOT}/${url}`);
   }
 
   post(url: string, payload: Object) {
-    return this.http.post(`${this.ROOT}/${url}`, payload);
+    return this.http.post<any[]>(`${this.ROOT}/${url}`, payload);
   }
   put(url: string, payload: Object) {
-    return this.http.put(`${this.ROOT}/${url}`, payload);
+    return this.http.put<any[]>(`${this.ROOT}/${url}`, payload);
   }
   delete(url: string) {
     return this.http.delete(`${this.ROOT}/${url}`);

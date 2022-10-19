@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Todo } from 'src/app/shared/todo.model';
 import { TaskService } from 'src/app/task.service';
 
 @Component({
@@ -10,8 +11,9 @@ import { TaskService } from 'src/app/task.service';
 export class TaskViewComponent implements OnInit {
   // we want to create an array of lists
   lists: any;
-  tasks: any;
+  tasks!: Todo[];
   currentRoute: any;
+  taskToDo=Todo;
   constructor(
     private taskservice: TaskService,
     private route: ActivatedRoute,
@@ -25,9 +27,18 @@ export class TaskViewComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       // console.log(params);
       if (params['listId']) {
-        this.taskservice.getTasks(params['listId']).subscribe((tasks) => {
-          if (this.tasks.length) this.tasks = tasks;
+        this.taskservice.getTasks(params['listId']).subscribe((gottasks) => {
+          this.tasks=[]
+          // console.log(gottasks);
+          if (gottasks) {
+            gottasks.forEach((ele) => {
+              this.tasks.push(
+                new Todo(ele.title, ele.completed, ele._listId, ele._id)
+              );
+            });
+          }
           this.currentRoute = params['listId'];
+          // console.log('this tasks', this.tasks);
         });
       }
     });
@@ -35,6 +46,9 @@ export class TaskViewComponent implements OnInit {
     this.taskservice.getList().subscribe((lists) => {
       this.lists = lists;
     });
+
+    // when task is selected edit and delete buttons appear and route changes
+// when deselected buttons disappear and url goes back
   }
 
   // When delete is clicked it will take params of listid and taskid and using service deleteList delete the respective task
@@ -76,6 +90,16 @@ export class TaskViewComponent implements OnInit {
         params['taskId'],
         'edittask',
       ]);
+    });
+  }
+
+  
+  CompleteThisTask(){
+    this.route.params.subscribe((params: Params) => {
+      this.tasks.forEach((ele:Todo) => {
+        if (ele.taskId===params['taskId']){
+          // this.taskToDo=ele;
+        }
     });
   }
 }
