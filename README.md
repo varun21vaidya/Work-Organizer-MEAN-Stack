@@ -6,4 +6,4 @@ https://user-images.githubusercontent.com/65745841/196682811-b30405e0-66b2-4a27-
 
 
 This is a MEAN stack app for organizing your work.
-(Currently in Development phase)
+
